@@ -32,8 +32,8 @@
         <select name="vendor_name" id="vendor_name">
           <option value="vendor name1">Vendor Name1</option>
           <option value="vendor name2">Vendor Name2</option>
-          <option value="vendor name3">Vendor Name2</option>
-          <option value="vendor name4">Vendor Name3</option>
+          <option value="vendor name3">Vendor Name3</option>
+          <option value="vendor name4">Vendor Name4</option>
         </select>
       </div>
 
@@ -86,12 +86,23 @@
     </form>
 
     <script>
-      let billingData = [];
+      
+     let billingData = [];
+      function getData(){
+        return JSON.parse(localStorage.getItem('billing_details'));
+        console.log(getData);
+      }
       function setData(){
-        return localStorage.setItem("billing_details",JSON.stringify(billingData))
+        return localStorage.setItem("billing_details",JSON.stringify(billingData));
+        console.log(setData);
       }
       
+      let btnSubmit = document.getElementById("btn_submit");
+      btnSubmit.addEventListener("click",(e)=>{
+        submit();
+      })
       function submit(){
+        console.log("call submit");
         const obj = {
           billNo: document.querySelector("#bill_no").value,
           billDate: document.querySelector("#bill_date").value,
@@ -100,11 +111,15 @@
           vendorName: document.querySelector("#vendor_name").value,
           barcodeScan: document.querySelector("#barcode_scan").value,
         }
-        billingData.push(obj);
+        getData();
+        if (getData() != null)
+        {
+          billingData = getData();
+        }
+        billingData.push(obj)
         setData();
       }
-
-        
+      
     </script>
   </body>
 </html>
