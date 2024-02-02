@@ -1,0 +1,59 @@
+/* body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+  margin: auto;
+  max-width: 38rem;
+  padding: 2rem;
+} */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+form{
+  margin: 20px;
+}
+fieldset{
+  padding: 20px;
+  border-collapse: collapse;
+}
+.bill_container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+table{
+  height: 200px;
+  margin-left: -20px;
+  margin-bottom: -20px;
+}
+th{
+  padding: 20px;
+  /* text-align: center; */
+}
+.narration_table{
+  border: 1px solid black;
+  width: 100%;
+  border-left: none;
+  border-collapse: collapse;
+}
+.narration_table th,tr,td{
+  border: 1px solid black;
+  border-bottom: none;
+  text-align: left;
+}
+.narration_table tr{
+  border-bottom: none;
+}
+.narration_table td{
+  border-top: none;
+}
+.narration_table td div{
+  margin-left: 20px;
+}
+
+textarea{
+  border:none;
+  
+}

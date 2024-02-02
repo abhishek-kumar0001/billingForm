@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Form</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <form>
+      <fieldset>
+      <div class="bill_container">
+        <div class="bill_no_container">
+          <label for="bill_no">Bill No</label>
+          <input type="number" name="bill_no" id="bill_no">
+        </div>
+        <div class="bill_date_container">
+          <label for="bill_date">Bill Date</label>
+          <input type="date" name="bill_date" id="bill_date">
+        </div>
+      </div>
+
+      <div class="ref_container">
+        <label for="ref_no">Ref No</label>
+        <input type="text" name="ref_no" id="ref_no">
+        <label for="ref_date">Ref Date</label>
+        <input type="date" name="ref_date" id="ref_date">
+      </div>
+
+      <div class="vendor_container">
+        <label for="vendor_name">Vendor Name</label>
+        <select name="vendor_name" id="vendor_name">
+          <option value="vendor name1">Vendor Name1</option>
+          <option value="vendor name2">Vendor Name2</option>
+          <option value="vendor name3">Vendor Name2</option>
+          <option value="vendor name4">Vendor Name3</option>
+        </select>
+      </div>
+
+      <div class="barcode_scan_container">
+        <label for="barcode_scan">Barcode Scan</label>
+        <input type="text" name="barcode_scan" id="barcode_scan">
+      </div>
+
+      <input type="submit" value="Submit" onclick="submit()">
+
+      <table>
+        <thead>
+          <tr>
+            <th>Sl No</th>
+            <th>Product Name</th>
+            <th>Qty</th>
+            <th>Rate</th>
+            <th>Discount</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+
+      <table class="narration_table">
+        <tr>
+          <th><label for="narration">Nararation</label></th>
+          <th>Carrying and Forwarding</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <tr>
+          <td><textarea name="narration" id="narration" cols="30" rows="10"></textarea></td>
+          <td style="margin-left: 10px;">
+            <div>Discount</div>
+            <div>CGST Amount</div>
+            <div>SGST Amount</div>
+            <div>IGST Amount</div>
+            <div>Round Off(+/-)</div>
+            <div>Total Amount</div>
+          </td>
+          <td><textarea name="" id="" cols="30" rows="10"></textarea></td>
+          <td><textarea name="" id="" cols="30" rows="10"></textarea></td>
+        </tr>
+      </table>
+      
+      </fieldset>
+    </form>
+
+    <script>
+      let billingData = [];
+      function setData(){
+        return localStorage.setItem("billing_details",JSON.stringify(billingData))
+      }
+      
+      function submit(){
+        const obj = {
+          billNo: document.querySelector("#bill_no").value,
+          billDate: document.querySelector("#bill_date").value,
+          refNo: document.querySelector("#ref_no").value,
+          refDate: document.querySelector("#ref_date").value,
+          vendorName: document.querySelector("#vendor_name").value,
+          barcodeScan: document.querySelector("#barcode_scan").value,
+        }
+        billingData.push(obj);
+        setData();
+      }
+
+        
+    </script>
+  </body>
+</html>
